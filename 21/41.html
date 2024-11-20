@@ -8,17 +8,12 @@
 <body>
     <script>
         /**
-         * ! For in Loop over Object
+         * ! JS array concat()
          */
-        var Person={
-            name:'Jack',
-            age:39,
-            city:"London",
-            height:"6 feet"
-        }
-        for(var item in Person){
-            document.write(item+':'+Person[item]+'</br>');
-        }
+        var  arr1 = ["A", "B", "C"];
+        var  arr2 = ["D", "E", "F"];
+        arr3=arr1.concat(arr2);
+        document.write(arr3);
     </script>
 </body>
 </html>
