@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * !JS array splice()
+         * *The JavaScript array splice() method is used to add/remove the elements to/from the existing array. It returns the removed elements from an array. 
+         * *The splice() method also modifies the original array.
+         */
+         var numArray = [55,60,80,90,30,32,40];
+        //numArray.splice(index,removeCount,itemToBeAdded);
+        //remove
+        numArray.splice(1,1);
+        document.write(numArray);
+        //add
+        numArray.splice(0,0,50);
+        document.write("</br>"+numArray);
+    </script>
+</body>
+</html>
