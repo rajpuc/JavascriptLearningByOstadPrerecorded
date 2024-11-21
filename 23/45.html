@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * ! Array Find 
+         * * The JavaScript array find() method returns the first element of the given array that satisfies the provided function condition.
+         * ! Array Find index
+         * * The JavaScript array findIndex() method returns the index of first element of the given array that satisfies the provided function condition. It returns -1, if no element satisfies the condition.
+         */
+        var numArray = [30,32,40,55,60,80,90];
+        var result = numArray.find(function(value){
+            return value<35;
+        })
+        document.write(result + '</br>');
+        var resultIndex = numArray.findIndex(function(value){
+            return value<35;
+        })
+        document.write(resultIndex);
+    </script>
+</body>
+</html>
