@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * !JS number object
+         * * The JavaScript number object enables you to represent a numeric value. It may be integer or floating-point.
+         * 8isFinite()
+         * It determines whether the given value is a finite number.
+         * *isInteger()
+         * It determines whether the given value is an integer.
+         * *parseFloat()
+         * It converts the given string into a floating point number.
+         * *parseInt()
+         * It converts the given string into an integer number.
+         * *toFixed()
+         * It returns the string that represents a number with exact digits after a decimal point.
+         * *toString()
+         * It returns the given number in the form of string.
+         */
+        var num=7;
+        document.write(Number.isFinite(num) +"</br>");
+        num=7.5;
+        document.write(Number.isInteger(num) +"</br>");
+        num="7.765";
+        document.write(Number.parseFloat(num) +"</br>");
+        num="7.78";
+        document.write(Number.parseInt(num) +"</br>");
+        num=-7.5532355555578;
+        document.write(num.toFixed(3) +"</br>");
+        num=-7;
+        document.write(num.toString() +"</br>");
+       
+    </script>
+</body>
+</html>
