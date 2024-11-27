@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="MyEvent('Load hoyese')">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ufnagMewn4E?si=NIpZyqp3_ZurCHO3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <input type="text" onchange="MyEvent('change hoyese')"> </body>  
+    <input type="text" onkeydown="MyEvent('keydown hoyese')"> </br>  
+    <input type="text" onkeyup="MyEvent('keyup hoyese')"> </br>  
+    <script>
+        /**
+         * !JS Common Events
+         * *HTML events are "things" that happen to HTML elements.
+         * *onclick()
+         * The user clicks an HTML element
+         * *onchange()
+         * An HTML element has been changed
+         * *onmouseover()
+         * The user moves the mouse over an HTML element
+         * *onmouseout()
+         * The user moves the mouse away from an HTML element
+         * *onkeydown()
+         * The user pushes a keyboard key
+         * *onload()
+         * The browser has finished loading the page
+         */
+        
+        
+         function  MyEvent(msg){
+            console.log(msg);
+         }
+
+         
+    </script>
+</body>
+</html>
