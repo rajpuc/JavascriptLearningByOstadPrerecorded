@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="objAlert()">Alert</button>
+    <button onclick="objConfirm()">Confirm</button>
+    <button onclick="objPrompt()">Prompt</button>
+    <button onclick="objOpen()">Open</button>
+    <button onclick="objClose()">Close</button>
+    <button onclick="objSetTimeOut()">SetTimeout</button>
+    <script>
+        /**
+         * !JS Window object
+         * * The window object represents a window in browser. An object of window is created automatically by the browser.
+         * *alert()
+         * displays the alert box containing message with ok button.
+         * *confirm()
+         * displays the confirm dialog box containing message with ok and cancel button.
+         * *prompt()
+         * displays a dialog box to get input from the user.
+         * *open()
+         * opens the new window.
+         * *close()
+         * closes the current window.
+         * *setTimeout()
+         * performs action after specified time like calling function, evaluating expressions etc.
+         */
+
+         function objAlert(){
+            alert("Save success");
+         }
+
+         function objConfirm(){
+            confirm("Do you want to delete ?");
+         }
+
+         function objPrompt(){
+            prompt("Write your name:");
+         }
+
+         function objOpen(){
+            open();
+         }
+
+         function objClose(){
+            close();
+         }
+
+         function objSetTimeOut(){
+            setTimeout(function(){
+                alert("After 5 sec");
+            },5000);
+         }
+        
+    </script>
+</body>
+</html>
