@@ -25,9 +25,10 @@
 
         
         function Demo(){
-            //Display the full URL of a document
-            var info= document.url;
-            document.getElementsByTagName('p')[0].innerHTML=info;
+            //Replace the content of a document
+            document.open('text/html','replace');
+            document.write('<h1>Hello Rajesh</h1>');
+            document.close();
         }
          
     </script>
