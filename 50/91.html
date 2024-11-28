@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <ul id="MyItems">
+
+    </ul>
+   <input type="text" id="myInput"> <br>
+   <button onclick="addItem()">Add</button>
+    
+    <script>
+        /**
+         * !HTML DOM: Create Element Append Element
+         */
+
+        function addItem(){
+            var itemValue = document.getElementById('myInput').value;
+            var listItem=document.createElement('li');
+            listItem.innerHTML = itemValue;
+            var MyItems =document.getElementById("MyItems");
+            MyItems.appendChild(listItem);
+
+        }
+
+
+    </script>
+</body>
+
+</html>
