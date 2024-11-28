@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <img id="myImage" src="https://www.softorbits.net/assets/img/how-to/en/image-resizer-download/bpr-sizes.640w.webp" width="280" height="340" alt="">
+
+    <button onclick="changeAttr()">Change</button>
+    <script>
+        /**
+         * !HTML DOM: Changing Attribute value.
+         */
+        function changeAttr(){
+            var myImage=document.getElementById("myImage");
+            myImage.src='https://img.informer.com/p3/LIR-v5.1-main-screen.png';
+            myImage.height='600';
+            myImage.width='600';
+
+        }
+        
+
+
+    </script>
+</body>
+
+</html>
