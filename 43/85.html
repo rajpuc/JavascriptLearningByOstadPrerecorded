@@ -7,7 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
     <button onclick="Demo()">Click</button>
     
     <script>
@@ -25,11 +33,11 @@
 
         
         function Demo(){
-            //Open a new window, and add some content
-            var w=window.open();
-            w.document.open();
-            w.document.write('<h1>Hello New Window Opened!</h1>');
-            w.document.close();
+            //Display the number of elements with a specific tag name
+            var myItems = document.getElementsByTagName('p');
+            let ItemCount=myItems.length;
+            alert(ItemCount);
+            
         }
          
     </script>
