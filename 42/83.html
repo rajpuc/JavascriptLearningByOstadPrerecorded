@@ -12,7 +12,7 @@
     
     <script>
         /**
-         * !Finding HTML Document Using Dom
+         * !Dom
          * *Display all name value pairs of cookies in a document
          * Display the domain name of the server that loaded the document
          * Display the date and time the document was last modified
@@ -25,8 +25,8 @@
 
         
         function Demo(){
-            //Display all name value pairs of cookies in a document
-            var info= document.cookie;
+            //Display domain name
+            var info= document.domain;
             document.getElementsByTagName('p')[0].innerHTML=info;
         }
          
