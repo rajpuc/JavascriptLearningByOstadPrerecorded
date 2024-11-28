@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="MyId"></h1>
+    <h1 class="MyClass"></h1>
+    <h1 class="MyClass"></h1>
+    <h1 class="MyClass"></h1>
+    <h1 name="MyName"></h1>
+
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    
+    <script>
+        /**
+         * !Finding HTML Document Using Dom
+         */     
+        
+         var myElement = document.getElementById("MyId");
+         myElement.innerHTML="Shuvo Sharodhiya";
+         var MyClasses =document.getElementsByClassName("MyClass");
+
+        /**
+         * !getElementsByClassName returns a live HTMLCollection, which does not have the forEach method available directly. If you want to use forEach on the result, you need to convert the HTMLCollection to an array.
+         */  
+         
+         Array.from(MyClasses).forEach((item)=> console.log(item))
+         Array.from(MyClasses).forEach((element) => {
+            element.innerHTML="Hello Lucifer";
+         });
+         
+         
+         MyClasses[2].innerHTML="Hello There";
+
+         var MyName = document.getElementsByName("MyName");
+         MyName[0].innerHTML="Finding using name attribute also returns a collection of elements";
+
+         var tagName = document.getElementsByTagName('p');
+         Array.from(tagName).forEach((element) => {
+            element.innerHTML="This also returns an array.";
+         });
+         tagName[1].innerHTML="P 2 manipulated"
+
+    </script>
+</body>
+</html>
