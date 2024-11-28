@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <button onclick="Demo()">Click</button>
+    
+    <script>
+        /**
+         * !Finding HTML Document Using Dom
+         * *Display all name value pairs of cookies in a document
+         * Display the domain name of the server that loaded the document
+         * Display the date and time the document was last modified
+         * Display the title of a document
+         * Display the full URL of a document
+         * Replace the content of a document
+         * Open a new window, and add some content
+         * Display the number of elements with a specific tag name
+         */     
+
+        
+        function Demo(){
+            //Display all name value pairs of cookies in a document
+            var info= document.cookie;
+            document.getElementsByTagName('p')[0].innerHTML=info;
+        }
+         
+    </script>
+</body>
+</html>
