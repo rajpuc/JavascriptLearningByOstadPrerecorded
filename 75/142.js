@@ -1,133 +1,83 @@
+//!Rajesh tmr jonno msg: aikhane and er agher kicu lectuer er j note sob ami nijer teke poreci,Rabbil bro aigula porai nai.So don't get confused jokon tumi aigula future a porba.
 /**
-*!What is a Closure in JavaScript?
-->A closure is a function that "remembers" the variables from its lexical scope (the scope in which it was defined), even after the outer function has finished executing.
+*! differences between var, let, and const in JavaScript:
+1. Scope
+    ->var:
+        ->Function-scoped: It is limited to the function in which it is declared.
+        ->If declared outside a function, it becomes globally scoped.
+        ->It ignores block scope, so it is accessible even outside {} blocks (like if or for blocks).
 
-->In simpler terms, closures allow a function to access variables from its outer function, even when the outer function is no longer active.
-
-*How Closures Work
-->Closures work because JavaScript functions carry with them a reference to their lexical environment (the scope in which they were created). When a function is executed, it looks for variables in its own scope and, if not found, continues searching in its outer scopes.
- */
-
-function outerFunction() {
-    let outerVariable = "I am from the outer scope";
-  
-    function innerFunction() {
-      console.log(outerVariable); // Accessing the variable from the outer function
-    }
-  
-    return innerFunction;
+*/
+if (true) {
+    var x = 10;
 }
+console.log(x); // Outputs: 10 (block scope is ignored)
+/**
+    ->let:
+        ->Block-scoped: It is limited to the block ({}) where it is declared.
+*/
+if (true) {
+    let y = 20;
+}
+console.log(y); // Error: y is not defined
+/**
+    ->const:
+        ->Also block-scoped, just like let. 
+*/
   
-const closureFunction = outerFunction(); // outerFunction executes and returns innerFunction
-closureFunction(); // Outputs: "I am from the outer scope"
 
 /**
-Step-by-Step Explanation:
-    ->outerFunction is called:
-        ->A new execution context is created.
-        ->outerVariable is declared and assigned "I am from the outer scope".
-        ->innerFunction is defined and returned.
+2. Re-declaration
+    ->var:
+        ->Can be re-declared in the same scope. 
 
-    ->closureFunction stores innerFunction:
-        ->Even though outerFunction has finished execution, the innerFunction still "remembers" the variable outerVariable from its outer scope due to the closure.
-    
-    ->When closureFunction() is called:
-        ->It executes innerFunction, which accesses outerVariable from the closed-over lexical scope of outerFunction.
+            var z = 30;
+            var z = 40; // No error
+    ->let:
+        ->Cannot be re-declared in the same scope.
+
+            let a = 50;
+            let a = 60; // Error: Identifier 'a' has already been declared
+    ->const:
+        ->Cannot be re-declared in the same scope, just like let.
+*/
+/**
+3. Initialization
+    ->var:
+        ->Can be declared without being initialized.
+
+            var b;
+            console.log(b); // Outputs: undefined
+    ->let:
+        ->Can also be declared without being initialized.
+
+            let c;
+            console.log(c); // Outputs: undefined
+    ->const:
+        ->Must be initialized at the time of declaration.
+
+            const d; // Error: Missing initializer in const declaration
+            const d = 70; // Correct
+
 */
 
-/**
-Practical Use Cases of Closures
-    1. Data Encapsulation (Private Variables)
-        ->Closures can be used to create "private" variables that are only accessible through specific functions.
- */
-function counter() {
-    let count = 0; // Private variable
-    
-    return {
-        increment: function () {
-            count++;
-            console.log(count);
-        },
-        decrement: function () {
-            count--;
-            console.log(count);
-        },
-    };
-}
-    
-const myCounter = counter();
-myCounter.increment(); // Outputs: 1
-myCounter.increment(); // Outputs: 2
-myCounter.decrement(); // Outputs: 1
-
-//Here, count is private and cannot be accessed directly, but can be modified through the increment and decrement methods.
 
 /**
-    2. Function Factories
-        ->Closures allow creating multiple functions with shared behavior but independent states.
-*/
+4. Hoisting    
+->Hoisting is the behavior where variable declarations are moved to the top of their scope before execution.
+    ->var:
+        ->Is hoisted but initialized as undefined.
 
-function createMultiplier(multiplier) {
-    return function (value) {
-      return value * multiplier;
-    };
-}
+            console.log(h); // Outputs: undefined
+            var h = 140;
 
-const double = createMultiplier(2); // Multiplier is 2
-const triple = createMultiplier(3); // Multiplier is 3
+    ->let and const:
+        ->Are hoisted but remain in a "temporal dead zone" until the declaration is encountered.
+        ->Accessing them before declaration causes a ReferenceError.
 
-console.log(double(5)); // Outputs: 10
-console.log(triple(5)); // Outputs: 15
+            console.log(i); // Error: Cannot access 'i' before initialization
+            let i = 150;
 
 
-/**
-    3. Callbacks and Event Handlers
-        ->Closures are commonly used in event listeners or asynchronous operations. 
-*/
-function setupClickHandler(buttonId, message) {
-    document.getElementById(buttonId).addEventListener("click", function () {
-      console.log(message); // Message is "remembered" by the closure
-    });
-}
 
-setupClickHandler("myButton", "Button clicked!");
-
-/**
-Key Points to Remember About Closures
-    ->1. Closures Capture Variables, Not Their Values
-        ->A closure keeps a reference to the original variable, not a snapshot of its value. 
-*/
-
-function createCounters() {
-    let count = 0;
-  
-    return function () {
-      count++;
-      console.log(count);
-    };
-}
-
-const counter1 = createCounters();
-const counter2 = createCounters();
-
-counter1(); // Outputs: 1
-counter1(); // Outputs: 2
-counter2(); // Outputs: 1 (independent of counter1)
-  
-/**
-    2.Memory Usage
-        ->Because closures keep variables in memory, be cautious of potential memory leaks(
-            A memory leak in JavaScript occurs when the program keeps holding references to variables or objects that are no longer needed, preventing the memory they occupy from being freed (garbage collected). Over time, this can cause your program to consume more memory than necessary, leading to performance issues or crashes.
-            Fix:
-                ->Use null to dereference unused variables.
-                ->Clear timers or event listeners when no longer needed.
-                ->Avoid excessive use of global variables.
-        ) if closures are used excessively.
-*/
-
-/**
-Summary
-    A closure is:
-        ->A function with access to its own scope, the scope of the outer function, and the global scope.
-        ->Useful for creating private variables, function factories, and handling asynchronous behavior. 
 */
