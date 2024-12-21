@@ -1,83 +1,48 @@
-//!Rajesh tmr jonno msg: aikhane and er agher kicu lectuer er j note sob ami nijer teke poreci,Rabbil bro aigula porai nai.So don't get confused jokon tumi aigula future a porba.
 /**
-*! differences between var, let, and const in JavaScript:
-1. Scope
-    ->var:
-        ->Function-scoped: It is limited to the function in which it is declared.
-        ->If declared outside a function, it becomes globally scoped.
-        ->It ignores block scope, so it is accessible even outside {} blocks (like if or for blocks).
-
+*! Encapsulation Using Closures
+*1.Dorun ami akta counter create korbo:
+    ->jetar initial value thakbe 0.
+    ->Counter er value increment and decrement korbo.
+    ->counter er value get korbo.
+*1.1 So aikhane 3 ta action thakbe r counting er jonno akta data thakce.
+*Akn ai sobgula k ami grouping kore rakte rakbo like below:
 */
-if (true) {
-    var x = 10;
+
+function createCounter(){
+    let count = 0; //1.3.2
+    return {
+        increment: function (){ //1.3.2
+            count++;
+        },
+        decrement: function(){ //1.3.2
+            count--;
+        },
+        getCount: function(){ //1.3.2 so aikhane ami korlam ki amer data k and data related action k ami akta group er moddhe niye ashlam. Fole inner complexity manage hoye gelo, data protection hoye gelo, access control hoye gelo and aikhane code gula onk beshi maintable and readable hoye gelo.
+            return count;
+        }
+    }
+    //1.2 ai j onkgula action k ami bind kore return kore dilam, ai process tai hocce closure.And ai closures er maddhomei amder countinger jonno j data dorkar,actions dorkar shegula k grouping korci, data protection dicci, access control nicci. Ete kore 3ta action e guchano obostai thakbe.Thats why code er maintainability bere jabe.Orthad encapsulation er j bishoyti sheta achieve hobe.
+    
+    /*1.3 Tahole keyal kore dekhen encapsulation er j shorto cilo:
+        1.3.1 data and action k group kore fela
+        1.3.2. So ami aikhane encaptualation er j bochishto shegula aikhane achieve korlam.
+        1.3.3 keep in mind amra kintu ai function er baire r count k access korte parbo na.
+    */
 }
-console.log(x); // Outputs: 10 (block scope is ignored)
-/**
-    ->let:
-        ->Block-scoped: It is limited to the block ({}) where it is declared.
-*/
-if (true) {
-    let y = 20;
-}
-console.log(y); // Error: y is not defined
-/**
-    ->const:
-        ->Also block-scoped, just like let. 
-*/
-  
 
-/**
-2. Re-declaration
-    ->var:
-        ->Can be re-declared in the same scope. 
+//1.4 Tahole ai j code amra likheci shei process takei amra bolic encapsulation.
 
-            var z = 30;
-            var z = 40; // No error
-    ->let:
-        ->Cannot be re-declared in the same scope.
+//1.5 Now question hocce counter k kivabe use korte pari? er jonno first a amader object make korte hobe:
 
-            let a = 50;
-            let a = 60; // Error: Identifier 'a' has already been declared
-    ->const:
-        ->Cannot be re-declared in the same scope, just like let.
-*/
-/**
-3. Initialization
-    ->var:
-        ->Can be declared without being initialized.
+const counter = createCounter();
 
-            var b;
-            console.log(b); // Outputs: undefined
-    ->let:
-        ->Can also be declared without being initialized.
+counter.increment();
+counter.increment();
+counter.increment();
+counter.increment();
+counter.increment();
+counter.decrement();
+counter.decrement();
+console.log(counter.getCount());
 
-            let c;
-            console.log(c); // Outputs: undefined
-    ->const:
-        ->Must be initialized at the time of declaration.
-
-            const d; // Error: Missing initializer in const declaration
-            const d = 70; // Correct
-
-*/
-
-
-/**
-4. Hoisting    
-->Hoisting is the behavior where variable declarations are moved to the top of their scope before execution.
-    ->var:
-        ->Is hoisted but initialized as undefined.
-
-            console.log(h); // Outputs: undefined
-            var h = 140;
-
-    ->let and const:
-        ->Are hoisted but remain in a "temporal dead zone" until the declaration is encountered.
-        ->Accessing them before declaration causes a ReferenceError.
-
-            console.log(i); // Error: Cannot access 'i' before initialization
-            let i = 150;
-
-
-
-*/
+//1.6 So in this way using js closure amra encapsulation korte pari.
