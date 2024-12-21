@@ -1,205 +1,101 @@
 /**
- * ! Futre a jokon tumi porba ata rajesh tokon aikhane serial number ba file er gormil dekhe hoito confused hoye jete paro j aikhane onk missing ace, as ami tmk valo korei cini. So ata akdomi vabbe na. Tumi sobgulai note korteco sudu serial number a golmal kore felco.Baki sob tik e ace.So relax hoye sob poro.
+ * !1.What is Hoisting in JavaScript?
+ * 1.1 Hoisting is JavaScript's default behavior of moving declarations (of variables, functions, or classes) to the top of their scope(variable ta j scope a ace shetar surute(top a) niye jai) before code execution.
+ * 1.2 This means you can use a variable or function before it is declared in the code, but the behavior depends on how the variable or function is declared (var, let, const, or function).
  */
-
-/**
- * ! What is Scope in JavaScript?
- * 1. Scope in JavaScript refers to where variables, functions, and objects are accessible in your code. It determines the "visibility" or "accessibility" of variables.
- * *2. Types of Scope in JavaScript
- * 2.1. Global Scope
- * 2.1.1 Variables declared outside any function or block have global scope.They can  be accessed anywhere in the code.
- * 2.1.2 Example:
- */
-
-let globalVar = "I am global"; // Global variable
-
-function exampleFunction() {
-  console.log(globalVar); // Accessible here
-}
-
-exampleFunction();
-console.log(globalVar); // Accessible here
 
 
 /**
- * 2.2 Function Scope
- * 2.2.1 Variables declared inside a function are accessible only within that function.This is called function scope.
- *2.2.2 Example:
+ * *2.How Hoisting Works
+ * 2.1 Only Declarations Are Hoisted
+ * 2.1.1 For variables, only the declaration (e.g., var x;) is hoisted, not the initialization (e.g., x = 5;).
+ * 2.2 Behavior Depends on Declaration Type
+ * 2.2.1 var declarations are hoisted and initialized with undefined.
+ * 2.2.2 let and const are hoisted but are not initialized (they stay in a "temporal dead zone" until the declaration is reached).
+ [
+    Temporal Dead Zone: The TDZ is the period of time between the start of the scope and the point where the variable is declared and initialized. During this time:
+
+    The variable exists in memory.
+    Any attempt to access the variable (read or write) will result in a ReferenceError.
+ ]
+ * 2.2.3 Function declarations are fully hoisted.
+ * 2.2.4 Function expressions are treated like variables (hoisted as undefined).
  */
-
- function myFunction() {
-    let functionVar = "I am inside the function";
-    console.log(functionVar); // Accessible here
-  }
-  
-  myFunction();
-  console.log(functionVar); // Error: functionVar is not defined
-
-/**
- * 2.3 Block Scope
- * 2.3.1 Variables declared with let or const inside {} (e.g., if, for, or any block) are only accessible within that block.
- * 2.3.2 This is called block scope.
- * 2.3.3 Example:
- */
-
-  if (true) {
-    let blockVar = "I am inside the block";
-    console.log(blockVar); // Accessible here
-  }
-  
-  console.log(blockVar); // Error: blockVar is not defined
-
-/**
- * *3. Scope Hierarchy (or Chain)
- * 3.1 JavaScript uses a scope chain to resolve variables.
- * 3.2 If a variable is not found in the current scope, JavaScript looks in the outer (parent) scope, all the way up to the global scope.
- * 3.3 Example:
- */
-  
-let outerVar = "I am in the outer scope";
-
-function innerFunction() {
-  let innerVar = "I am in the inner scope";
-  console.log(outerVar); // Accessible (found in the outer scope)
-  console.log(innerVar); // Accessible (found in the current scope)
-}
-
-innerFunction();
-console.log(innerVar); // Error: innerVar is not defined
-
-
-/**
- * * 4.Nested Scopes
- * 4.1 Functions or blocks can be nested, and inner scopes can access variables from their parent scope.
- * 4.2 Example:
- */
-
-let globalVar = "I am global";
-
-function outerFunction() {
-  let outerVar = "I am in the outer function";
-
-  function innerFunction() {
-    let innerVar = "I am in the inner function";
-    console.log(globalVar); // Accessible
-    console.log(outerVar); // Accessible
-    console.log(innerVar); // Accessible
-  }
-
-  innerFunction();
-  console.log(innerVar); // Error: innerVar is not defined
-}
-
-outerFunction();
-
-
-/**
- * *5. Key Points to Remember
- *  5.1 Global Scope: Accessible everywhere.
- *  5.2 Function Scope: Limited to the function.
- *  5.3 Block Scope: Limited to the block ({}) when using let or const.
- *  5.4 Scope Chain: JavaScript searches for variables from the innermost scope outward.
- *  5.5 Best Practice: Avoid polluting the global scope by using block and function scopes.
- */
-
-/**
- * *6. What Does "Polluting the Global Scope" Mean?
- 
- *  6.1 In JavaScript, variables and functions declared in the global scope (outside of any function or block) are accessible throughout your entire codebase(A codebase refers to the entire collection of source code used to build a software application, program, or project. It includes all the files, directories, and libraries that developers use and maintain to develop the application.). If too many variables are added to the global scope, it can:
- 
- *  6.1.1 Increase the Risk of Conflicts: Two scripts or parts of your code may use the same global variable name, leading to unexpected behavior.
- *  6.1.2 Make Debugging Harder: If a global variable is accidentally modified in one part of the code, it can affect other parts, making it difficult to trace bugs.
- *  6.1.3 Impact Performance: The JavaScript engine must check the global scope for variable lookups, which can slightly slow things down if the global scope is cluttered(বিশৃঙ্খল, হুড়াহুড়ি করা, তালগোল পাকাইয়া রাখা).
- 
- * *6.2 Best Practice: Use Block and Function Scopes 
- *  6.2.1 To prevent global scope pollution, limit the variables and functions declared in the global scope by using block scopes (let, const) and function scopes.
  
 
- * *7. How to Avoid Global Scope Pollution?
- *  7.1 Use let and const Instead of var
- *  7.1.1 let and const have block scope, meaning they are limited to the {} block in which they are declared.
- *  7.1.2 This prevents variables from being added to the global scope unintentionally.
- */
+ /**
+  * 3. Examples of Hoisting
+  * 3.1  Variable Hoisting with var
+  */
+  console.log(a); // Outputs: undefined (declaration is hoisted, but not initialization)
+  var a = 10;
+  console.log(a); // Outputs: 10
 
-  if (true) {
-    let blockScoped = "I am block scoped";
-    console.log(blockScoped); // Accessible here
-  }
-  console.log(blockScoped); // Error: blockScoped is not defined
-  
-  //7.1.3 Contrast with var:
-  if (true) {
-    var globalScoped = "I am global scoped";
-    console.log(globalScoped); // Accessible here
-  }
-  console.log(globalScoped); // Accessible here (pollutes global scope)
+  //3.1.1 Behind the scenes, JavaScript interprets it as:
+  var a;
+  console.log(a); // undefined
+  a = 10;
+  console.log(a); // 10
 
   /**
-   * *7.2 Use Functions to Encapsulate Logic
-   *  7.2.1 Wrap related logic inside a function so its variables don't leak into the global scope.
+   * 3.2 Variable Hoisting with let and const
+   * 3.2.1 let and const are hoisted but not initialized. Accessing them before the declaration causes a ReferenceError.
    */
-    function myFunction() {
-        let localVariable = "I am local to this function";
-        console.log(localVariable);
-    }
-    
-    myFunction();
-    console.log(localVariable); // Error: localVariable is not defined
 
-    //7.2.2 Without the function, the variable would pollute the global scope:
+  console.log(b); // Error: Cannot access 'b' before initialization
+  let b = 20;
+  
+  console.log(c); // Error: Cannot access 'c' before initialization
+  const c = 30;
 
-    let globalVariable = "I am global";
-    console.log(globalVariable); // Accessible everywhere
+  /**
+   * 3.2.2 Behind the scenes:
+   * 3.2.2.1 The declarations of let b and const c are hoisted, but they remain in the temporal dead zone until the code execution reaches the line where they are declared.
+   */
 
-    /**
-     * *7.3 Use Immediately Invoked Function Expressions (IIFE)
-     *  7.3.1 IIFEs execute immediately and create a local scope to contain variables.
-     */
-    (function () {
-        let privateVariable = "I am private";
-        console.log(privateVariable);
-    })();
-      
-    console.log(privateVariable); // Error: privateVariable is not defined
+  /**
+   * 4. Function Hoisting
+   * 4.1 Function declarations are fully hoisted, so you can call a function before it is defined.
+   */
 
-    /**
-     * *7.4 Group Variables in Objects
-     *  7.4.1 Instead of multiple global variables, group them into a single object to reduce clutter.
-     */
-    const appConfig = {
-        apiKey: "12345",
-        appName: "MyApp",
-        version: "1.0.0",
-    };
-      
-    console.log(appConfig.appName); // Access only via appConfig
+greet(); // Outputs: "Hello!"
 
-    /**
-     * *7.5 Use ES6 Modules
-     *  7.5.1 Modules (using import and export) automatically create a scoped environment, preventing global scope pollution.
-     *  7.5.2 Example:
-     */
-      // 7.5.3 module1.js:
-      export const greet = () => {
-        console.log("Hello");
-      };
-      // 7.5.4 main.js:
-      import { greet } from "./module1.js";
+function greet() {
+  console.log("Hello!");
+}
 
-      greet(); // Outputs: Hello
+//4.2 Behind the scenes:
+//4.2.1 The entire function is moved to the top:
 
-      //7.5.5 In this setup, greet is not global; it’s available only when imported.
+function greet() {
+    console.log("Hello!");
+}
+greet(); // "Hello!"
 
-      /**
-       * *7.6 Why Avoid Global Scope Pollution?
-       * 7.6.1 Maintain Code Readability : Scoped variables help keep code localized, making it easier to understand and debug.
-       * 7.6.2 Prevent Naming Conflicts : In large projects or when using third-party libraries, global variables may accidentally overwrite each other.
-       * 7.6.3 Improve Performance : Variables in the global scope take slightly longer to access than scoped variables because the JavaScript engine has to search the entire scope chain.
-       */
-      
-      /**
-       * * 8. Summary
-       *   8.1 Problem: Global scope pollution causes naming conflicts, hard-to-debug code, and minor performance issues.
-       *   8.2 Solution: Use block scope (let, const), functions, IIFEs, objects, and modules to encapsulate variables and limit their visibility.
-       *   8.3 Outcome: Cleaner, more maintainable, and conflict-free code.
-       */
+//4.2.2 However, function expressions (using var, let, or const) are treated as variables and are not fully hoisted.
+
+sayHello(); // Error: sayHello is not a function
+var sayHello = function () {
+  console.log("Hi!");
+};
+
+/**
+ * 5.Class Hoisting
+ * 5.1 Classes are hoisted but not initialized. Accessing them before their declaration results in a ReferenceError.
+ */
+const obj = new MyClass(); // Error: Cannot access 'MyClass' before initialization
+class MyClass {
+  constructor() {
+    this.name = "Test";
+  }
+}
+/**
+ * *6.Key Points to Remember
+ *  6.1 var: Hoisted and initialized with undefined.
+ *  6.2 let and const: Hoisted but in a temporal dead zone (not accessible until the declaration line).
+ *  6.3 Function Declarations: Fully hoisted and can be used before declaration.
+ *  6.4 Function Expressions and Classes: Hoisted but not initialized, leading to errors if accessed before declaration.
+ */
+
+//7.Why Does Hoisting Exist?
+//7.1 Hoisting allows the JavaScript engine to allocate memory for variables and functions before executing the code. This enables flexible coding but can lead to unexpected behavior if not well understood.
